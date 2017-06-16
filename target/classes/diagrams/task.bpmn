@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="taskProcess" name="测试分配任务" isExecutable="true">
+    <extensionElements>
+      <activiti:executionListener event="start" class="com.wisely.highlight_spring4.activiti.TaskListenerImpl"></activiti:executionListener>
+    </extensionElements>
+    <userTask id="usertask1-persontask" name="审批"></userTask>
+    <endEvent id="endevent2-persontask" name="End"></endEvent>
+    <userTask id="usertask2-persontask" name="经理审批">
+      <extensionElements>
+        <activiti:taskListener event="create" class="com.wisely.highlight_spring4.activiti.TaskListenerImpl2"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <startEvent id="startevent1-persontask" name="Start"></startEvent>
+    <sequenceFlow id="flow1" sourceRef="startevent1-persontask" targetRef="usertask1-persontask"></sequenceFlow>
+    <sequenceFlow id="flow2" sourceRef="usertask1-persontask" targetRef="usertask2-persontask"></sequenceFlow>
+    <sequenceFlow id="flow3" sourceRef="usertask2-persontask" targetRef="endevent2-persontask"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_taskProcess">
+    <bpmndi:BPMNPlane bpmnElement="taskProcess" id="BPMNPlane_taskProcess">
+      <bpmndi:BPMNShape bpmnElement="usertask1-persontask" id="BPMNShape_usertask1-persontask">
+        <omgdc:Bounds height="55.0" width="105.0" x="570.0" y="200.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent2-persontask" id="BPMNShape_endevent2-persontask">
+        <omgdc:Bounds height="35.0" width="35.0" x="536.0" y="420.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask2-persontask" id="BPMNShape_usertask2-persontask">
+        <omgdc:Bounds height="55.0" width="105.0" x="600.0" y="290.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="startevent1-persontask" id="BPMNShape_startevent1-persontask">
+        <omgdc:Bounds height="35.0" width="35.0" x="500.0" y="110.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="517.0" y="145.0"></omgdi:waypoint>
+        <omgdi:waypoint x="622.0" y="200.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="622.0" y="255.0"></omgdi:waypoint>
+        <omgdi:waypoint x="652.0" y="290.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="652.0" y="345.0"></omgdi:waypoint>
+        <omgdi:waypoint x="553.0" y="420.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

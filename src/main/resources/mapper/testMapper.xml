@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+        "-//mybatis.org//DTD Mapper 3.0//EN" 
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="testMapper">
+    <resultMap id="resultMap1" type="com.wisely.highlight_spring4.mybatis.pojo.User">
+        <association property="role" column="roleid" select="findRole"></association>
+    </resultMap>
+
+
+    <select id="findAllUser"  resultMap="resultMap1">
+        select * from sys_user;
+    </select>
+
+
+    <select id="findRole" parameterType="int" resultType="com.wisely.highlight_spring4.mybatis.pojo.Role">
+        select *  FROM sys_role WHERE id=#{id}
+    </select>
+
+    <insert id="testInsert" parameterType="com.wisely.highlight_spring4.mybatis.pojo.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT into sys_user(password,username) VALUES
+        <foreach collection="list" item="item" separator=",">
+        (#{item.password},#{item.username})
+        </foreach>
+    </insert>
+
+
+</mapper>

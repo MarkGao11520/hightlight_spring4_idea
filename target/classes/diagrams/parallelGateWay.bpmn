@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="parallelGateWay" name="并行网关" isExecutable="true">
+    <parallelGateway id="parallelgateway1-pargw" name="分支流"></parallelGateway>
+    <userTask id="usertask5-paragw" name="付款" activiti:assignee="买家"></userTask>
+    <userTask id="usertask6-paragw" name="发货" activiti:assignee="卖家"></userTask>
+    <userTask id="usertask7-paragw" name="收款" activiti:assignee="卖家"></userTask>
+    <userTask id="usertask8-paragw" name="收货" activiti:assignee="买家"></userTask>
+    <parallelGateway id="parallelgateway3-paragw" name="汇入流"></parallelGateway>
+    <endEvent id="endevent1-paragw" name="结束事件"></endEvent>
+    <sequenceFlow id="flow5" sourceRef="parallelgateway1-pargw" targetRef="usertask5-paragw"></sequenceFlow>
+    <sequenceFlow id="flow6" sourceRef="parallelgateway1-pargw" targetRef="usertask6-paragw"></sequenceFlow>
+    <startEvent id="startevent1-pargw" name="开始事件"></startEvent>
+    <sequenceFlow id="flow7" sourceRef="startevent1-pargw" targetRef="parallelgateway1-pargw"></sequenceFlow>
+    <sequenceFlow id="flow8" sourceRef="usertask5-paragw" targetRef="usertask7-paragw"></sequenceFlow>
+    <sequenceFlow id="flow9" sourceRef="usertask6-paragw" targetRef="usertask8-paragw"></sequenceFlow>
+    <sequenceFlow id="flow10" sourceRef="usertask8-paragw" targetRef="parallelgateway3-paragw"></sequenceFlow>
+    <sequenceFlow id="flow11" sourceRef="usertask7-paragw" targetRef="parallelgateway3-paragw"></sequenceFlow>
+    <sequenceFlow id="flow12" sourceRef="parallelgateway3-paragw" targetRef="endevent1-paragw"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_parallelGateWay">
+    <bpmndi:BPMNPlane bpmnElement="parallelGateWay" id="BPMNPlane_parallelGateWay">
+      <bpmndi:BPMNShape bpmnElement="parallelgateway1-pargw" id="BPMNShape_parallelgateway1-pargw">
+        <omgdc:Bounds height="40.0" width="40.0" x="387.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask5-paragw" id="BPMNShape_usertask5-paragw">
+        <omgdc:Bounds height="55.0" width="105.0" x="270.0" y="190.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask6-paragw" id="BPMNShape_usertask6-paragw">
+        <omgdc:Bounds height="55.0" width="105.0" x="440.0" y="190.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask7-paragw" id="BPMNShape_usertask7-paragw">
+        <omgdc:Bounds height="55.0" width="105.0" x="270.0" y="280.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask8-paragw" id="BPMNShape_usertask8-paragw">
+        <omgdc:Bounds height="55.0" width="105.0" x="440.0" y="280.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="parallelgateway3-paragw" id="BPMNShape_parallelgateway3-paragw">
+        <omgdc:Bounds height="40.0" width="40.0" x="387.0" y="350.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1-paragw" id="BPMNShape_endevent1-paragw">
+        <omgdc:Bounds height="35.0" width="35.0" x="400.0" y="440.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="startevent1-pargw" id="BPMNShape_startevent1-pargw">
+        <omgdc:Bounds height="35.0" width="35.0" x="400.0" y="70.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="407.0" y="170.0"></omgdi:waypoint>
+        <omgdi:waypoint x="322.0" y="190.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="407.0" y="170.0"></omgdi:waypoint>
+        <omgdi:waypoint x="407.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="440.0" y="217.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="417.0" y="105.0"></omgdi:waypoint>
+        <omgdi:waypoint x="407.0" y="130.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="322.0" y="245.0"></omgdi:waypoint>
+        <omgdi:waypoint x="322.0" y="280.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="492.0" y="245.0"></omgdi:waypoint>
+        <omgdi:waypoint x="492.0" y="280.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
+        <omgdi:waypoint x="492.0" y="335.0"></omgdi:waypoint>
+        <omgdi:waypoint x="407.0" y="350.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
+        <omgdi:waypoint x="375.0" y="307.0"></omgdi:waypoint>
+        <omgdi:waypoint x="407.0" y="307.0"></omgdi:waypoint>
+        <omgdi:waypoint x="407.0" y="350.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
+        <omgdi:waypoint x="407.0" y="390.0"></omgdi:waypoint>
+        <omgdi:waypoint x="417.0" y="440.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

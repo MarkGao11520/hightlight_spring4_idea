@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+        "-//mybatis.org//DTD Mapper 3.0//EN" 
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="roleMapper">
+    <resultMap id="resultMap1" type="com.wisely.highlight_spring4.mybatis.pojo.Role">
+        <association property="users" column="id" select="findUserByRoleId"></association>
+    </resultMap>
+
+
+    <select id="findUserByRoleId" parameterType="int" resultType="com.wisely.highlight_spring4.mybatis.pojo.User">
+        select * from sys_user where roleid = #{roleid};
+    </select>
+
+    <select id="findRole"  resultMap="resultMap1">
+        select *  FROM sys_role
+    </select>
+
+
+</mapper>
