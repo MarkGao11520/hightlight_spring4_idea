@@ -1,5 +1,7 @@
 package com.wisely.highlight_spring4.mybatis.pojo;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * Created by gaowenfeng on 2017/5/17.
  */
@@ -9,6 +11,14 @@ public class User {
     private String password;
     private Integer roleid;
     private Role role;
+
+    private byte id1;
+    private short id2;
+    private int id3;
+    private char id4;
+    private boolean id5;
+
+
 
     public Integer getRoleid() {
         return roleid;
