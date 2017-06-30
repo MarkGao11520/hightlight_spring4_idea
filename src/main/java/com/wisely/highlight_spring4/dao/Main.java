@@ -13,6 +13,27 @@ public class Main {
 //        user.setUname("zsx");
 //        user.setPassword("zsx");
 //        DAOFactory.getIUserDAOInstance().doCreate(user);
-        System.out.println(JSON.toJSONString(DAOFactory.getIUserDAOInstance().findAll()));
+        Main main = new Main();
+        int a = main.add(1,2);
+        int b = main.test(a);
+        int c = b++;
+        System.out.println(c);
+     //   System.out.println(JSON.toJSONString(DAOFactory.getIUserDAOInstance().findAll()));
     }
+
+    Main(){
+        System.out.println("1334");
+    }
+
+    public  int add(int a,int b){
+        b = b--;
+        return a+b;
+    }
+
+    public  int test(int a){
+        return ++a;
+    }
+
 }
+
+

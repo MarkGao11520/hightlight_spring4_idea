@@ -40,9 +40,6 @@ public class Receive implements Runnable{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-//            if(b = true){
-//                break;
-//            }
         }
     }
 

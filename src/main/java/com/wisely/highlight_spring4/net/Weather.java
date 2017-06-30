@@ -10,7 +10,7 @@ public class Weather extends  Thread{
     String weather = "aaaa";
     int port = 9898;
     InetAddress inetAddress = null;
-    DatagramSocket socket = null;  //声明多点广播套接字
+    DatagramSocket socket = null;
     Weather(){
         try {
             inetAddress = InetAddress.getByName("127.0.0.1");

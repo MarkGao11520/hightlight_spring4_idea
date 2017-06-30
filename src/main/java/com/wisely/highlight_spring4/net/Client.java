@@ -15,6 +15,7 @@ public class Client {
         System.out.println("尝试连接");
         try {
             socket = new Socket("127.0.0.1",8998);//实例化socket对象
+
             writer = new PrintWriter(socket.getOutputStream(),true);
             System.out.println("完成连接");
         } catch (IOException e) {
