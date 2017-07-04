@@ -8,6 +8,7 @@ import com.alibaba.fastjson.JSON;
 import org.activiti.engine.*;
 import org.activiti.engine.identity.Group;
 import org.activiti.engine.identity.User;
+import org.activiti.engine.impl.cmd.CreateUserCmd;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
@@ -111,11 +112,16 @@ public class AcTest {
 		identityService.saveUser(user);
 	}
 
+
+
 	@Test
 	public void main() {
 //		taskService.claim("2504","zhangsan");
 //		taskService.setAssignee("2504","lisi");
-		System.out.println(taskService.createTaskQuery().list());
+//		createGroup(identityService,"2","营销部","");
+		AcTest.creatUser(identityService,"1","高文峰","gwf","","66666666");
+		identityService.createMembership("1","2");
+//		System.out.println(taskService.createTaskQuery().list());
 	}
 
 	/**
@@ -188,7 +194,7 @@ public class AcTest {
     /**
 	 * 完成当前任务
 	 */
-    @Test
+//    @Test
 	public void completeMyPersonalTask(){
 		String taskId ="20002";
 	 processEngine.getTaskService().complete(taskId);
