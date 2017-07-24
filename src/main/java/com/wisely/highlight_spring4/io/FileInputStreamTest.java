@@ -4,16 +4,24 @@ import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by gaowenfeng on 2017/6/21.
  */
 public class FileInputStreamTest {
     File file = new File("/Users/gaowenfeng/desktop/io/file/hello.txt");
+    File dir = new File("/Users/gaowenfeng/desktop/io/file");
 
     @Test
     public void testFileOutputStream() {
         try {
+            if(!file.exists()){
+                dir.mkdirs();
+                file.createNewFile();
+            }
             FileOutputStream outputStream = new FileOutputStream(file);
             byte buy[] = "我有一只小毛驴,我从来也不骑".getBytes();
             outputStream.write(buy);
@@ -43,7 +51,7 @@ public class FileInputStreamTest {
         }
     }
 
-    @Test
+//    @Test
     public void testInOut() {
         byte[] buffer = new byte[512];   //一次取出的字节数大小,缓冲区大小
         int numberRead = 0;
