@@ -1,5 +1,7 @@
 package com.wisely.highlight_spring4.ch1.aop;
 
+import com.alibaba.fastjson.JSON;
+import com.wisely.highlight_spring4.cache.User;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -7,6 +9,8 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.TreeSet;
 
 /**
  * Created by gaowenfeng on 2017/2/2.
@@ -56,4 +60,5 @@ public class LogAspect {
         System.out.println(e.getMessage());
 
     }
+
 }

@@ -30,7 +30,7 @@ public class Main {
     static void priorityQueueSort(ComparisonKey[] a){
         int i;
         int n = a.length;
-        PriorityQueue PQ = new ArrayPriorityQueue();
+        PriorityQueue PQ = new HeapPriorityQueue();
         for(i=0;i<n;i++){
             PQ.insert(a[i]);
         }

@@ -6,8 +6,8 @@ package com.wisely.highlight_spring4.structures.priorityqueue;
 public class PQItemString implements ComparisonKey{
     private String key;
 
-    PQItemString(String value){
-        key = value;
+    public PQItemString(String key) {
+        this.key = key;
     }
 
     @Override
